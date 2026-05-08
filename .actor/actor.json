@@ -1,0 +1,9 @@
+{
+  "actorSpecification": 1,
+  "name": "menuj-discovery",
+  "title": "Menuj Restaurant Discovery",
+  "description": "Vyhledávání restaurací v Ostravě přes Google Places API a zápis do Supabase",
+  "version": "0.1",
+  "buildTag": "latest",
+  "dockerfile": "./Dockerfile"
+}

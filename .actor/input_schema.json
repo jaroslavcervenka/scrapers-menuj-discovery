@@ -1,0 +1,34 @@
+{
+  "title": "Menuj Discovery Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "queries": {
+      "title": "Search queries",
+      "type": "array",
+      "description": "Seznam vyhledávacích dotazů pro Google Places. Pokud prázdné, použijí se výchozí dotazy pro Ostravu.",
+      "editor": "json",
+      "default": []
+    },
+    "district_map": {
+      "title": "District map",
+      "type": "object",
+      "description": "Mapování klíčových slov v adrese na district slug. Pokud prázdné, použije se výchozí mapa pro Ostravu.",
+      "editor": "json",
+      "default": {}
+    },
+    "default_district": {
+      "title": "Default district",
+      "type": "string",
+      "description": "Výchozí čtvrť pokud adresa neodpovídá žádnému klíčovému slovu.",
+      "editor": "textfield",
+      "default": "centrum"
+    },
+    "dry_run": {
+      "title": "Dry run",
+      "type": "boolean",
+      "description": "Pokud true, pouze vypíše nalezené restaurace bez zápisu do Supabase.",
+      "default": false
+    }
+  }
+}

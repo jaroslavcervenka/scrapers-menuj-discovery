@@ -1,0 +1,5 @@
+apify
+httpx
+supabase
+python-dotenv
+unidecode
