@@ -16,34 +16,6 @@ GOOGLE_API_KEY = os.environ["GOOGLE_MAPS_API_KEY"]
 PLACES_TEXT_SEARCH_URL = "https://maps.googleapis.com/maps/api/place/textsearch/json"
 PLACES_DETAILS_URL = "https://maps.googleapis.com/maps/api/place/details/json"
 
-DEFAULT_QUERIES = [
-    "restaurace denní menu Ostrava centrum",
-    "restaurace denní menu Moravská Ostrava",
-    "restaurace denní menu Ostrava Poruba",
-    "restaurace denní menu Ostrava-Jih",
-    "restaurace denní menu Mariánské Hory Ostrava",
-    "restaurace denní menu Slezská Ostrava",
-    "restaurace denní menu Vítkovice Ostrava",
-    "hospoda oběd Ostrava centrum",
-    "hospoda oběd Poruba Ostrava",
-    "restaurant lunch Ostrava",
-]
-
-DEFAULT_DISTRICT_MAP = {
-    "poruba": "poruba",
-    "moravská ostrava": "moravska-ostrava",
-    "moravska ostrava": "moravska-ostrava",
-    "mariánské hory": "marianske-hory",
-    "marianske hory": "marianske-hory",
-    "slezská ostrava": "slezska-ostrava",
-    "slezska ostrava": "slezska-ostrava",
-    "vítkovice": "vitkovice",
-    "vitkovice": "vitkovice",
-    "ostrava-jih": "ostrava-jih",
-    "zábřeh": "ostrava-jih",
-    "hrabůvka": "ostrava-jih",
-}
-
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -208,10 +180,10 @@ def save_restaurant(db, restaurant: dict, district_map: dict, default_district: 
 async def main() -> None:
     async with Actor:
         inp = await Actor.get_input() or {}
-        queries = inp.get("queries") or DEFAULT_QUERIES
+        queries = inp["queries"]
         dry_run = inp.get("dry_run", False)
-        district_map = inp.get("district_map") or DEFAULT_DISTRICT_MAP
-        default_district = inp.get("default_district", "centrum")
+        district_map = inp["district_map"]
+        default_district = inp["default_district"]
 
         if dry_run:
             Actor.log.info("DRY RUN – data se nezapíší do Supabase")

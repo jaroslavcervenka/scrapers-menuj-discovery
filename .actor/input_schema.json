@@ -2,27 +2,25 @@
   "title": "Menuj Discovery Input",
   "type": "object",
   "schemaVersion": 1,
+  "required": ["queries", "district_map", "default_district"],
   "properties": {
     "queries": {
       "title": "Search queries",
       "type": "array",
-      "description": "Seznam vyhledávacích dotazů pro Google Places. Pokud prázdné, použijí se výchozí dotazy pro Ostravu.",
-      "editor": "json",
-      "default": []
+      "description": "Seznam vyhledávacích dotazů pro Google Places.",
+      "editor": "json"
     },
     "district_map": {
       "title": "District map",
       "type": "object",
-      "description": "Mapování klíčových slov v adrese na district slug. Pokud prázdné, použije se výchozí mapa pro Ostravu.",
-      "editor": "json",
-      "default": {}
+      "description": "Mapování klíčových slov v adrese na district slug.",
+      "editor": "json"
     },
     "default_district": {
       "title": "Default district",
       "type": "string",
       "description": "Výchozí čtvrť pokud adresa neodpovídá žádnému klíčovému slovu.",
-      "editor": "textfield",
-      "default": "centrum"
+      "editor": "textfield"
     },
     "dry_run": {
       "title": "Dry run",
