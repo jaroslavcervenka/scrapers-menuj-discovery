@@ -182,7 +182,7 @@ async def main() -> None:
         inp = await Actor.get_input() or {}
         queries = inp["queries"]
         dry_run = inp.get("dry_run", False)
-        district_map = inp["district_map"]
+        district_map = inp.get("district_map") or {}
         default_district = inp["default_district"]
 
         if dry_run:

@@ -2,7 +2,7 @@
   "title": "Menuj Discovery Input",
   "type": "object",
   "schemaVersion": 1,
-  "required": ["queries", "district_map", "default_district"],
+  "required": ["queries", "default_district"],
   "properties": {
     "queries": {
       "title": "Search queries",
@@ -13,8 +13,9 @@
     "district_map": {
       "title": "District map",
       "type": "object",
-      "description": "Mapování klíčových slov v adrese na district slug.",
-      "editor": "json"
+      "description": "Mapování klíčových slov v adrese na district slug. Pro malá města bez čtvrtí nech prázdné.",
+      "editor": "json",
+      "default": {}
     },
     "default_district": {
       "title": "Default district",
