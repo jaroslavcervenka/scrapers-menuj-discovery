@@ -132,7 +132,7 @@ def restaurant_exists(db, place_id: str) -> bool:
     return len(res.data) > 0
 
 
-def save_restaurant(db, restaurant: dict, district_map: dict, default_district: str) -> bool:
+def save_restaurant(db, restaurant: dict, city: str, district_map: dict, default_district: str) -> bool:
     """
     Uloží restauraci do Supabase.
     Vrátí True pokud byla vložena, False pokud už existovala.
@@ -157,6 +157,7 @@ def save_restaurant(db, restaurant: dict, district_map: dict, default_district: 
         "address": restaurant["address"],
         "lat": restaurant["lat"],
         "lng": restaurant["lng"],
+        "city": city,
         "district": detect_district(
             restaurant["address"],
             district_map,
@@ -182,6 +183,7 @@ async def main() -> None:
         inp = await Actor.get_input() or {}
         queries = inp["queries"]
         dry_run = inp.get("dry_run", False)
+        city = inp["city"]
         district_map = inp.get("district_map") or {}
         default_district = inp["default_district"]
 
@@ -245,7 +247,7 @@ async def main() -> None:
 
             for restaurant in enriched:
                 try:
-                    if save_restaurant(db, restaurant, district_map, default_district):
+                    if save_restaurant(db, restaurant, city, district_map, default_district):
                         inserted += 1
                         Actor.log.info(f"  + {restaurant['name']}")
                     else:
